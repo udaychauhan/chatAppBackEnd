@@ -1,0 +1,540 @@
+define({ "api": [
+  {
+    "group": "ChatRoom",
+    "version": "1.0.0",
+    "type": "post",
+    "url": "/api/v1/chatRoom/create",
+    "title": "Create A Chat Room.",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>Auth Token (body param) (required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "chatRoomName",
+            "description": "<p>Chat Room Name  (body param) (required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "creatorName",
+            "description": "<p>Chat Room Creator Name  (body param) (required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "creatorId",
+            "description": "<p>Chat Room Creator Id  (body param) (required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "myResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " {\n    \"error\": false,\n    \"message\": \"Chat Room Created\"\n    \"status\": 200,\n     \"data\": {\n       chatRoomId:string,\n       chatRoomName: string,\n       creatorName: string,\n       creatorId: string,\n       createdOn: string,\n       modifiedOn: string\n    }\n}",
+          "type": "object"
+        }
+      ]
+    },
+    "filename": "app/routes/chatRoom.js",
+    "groupTitle": "ChatRoom",
+    "name": "PostApiV1ChatroomCreate"
+  },
+  {
+    "group": "ChatRoom",
+    "version": "1.0.0",
+    "type": "post",
+    "url": "/api/v1/chatRoom/delete",
+    "title": "Delete A Chat Room.",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>Auth Token (body param) (required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "chatRoomId",
+            "description": "<p>Chat Room Id  (body param) (required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "myResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " {\n    \"error\": false,\n    \"message\": \"Deleted the chat room successfully\"\n    \"status\": 200,\n    \"data\":null\n}",
+          "type": "object"
+        }
+      ]
+    },
+    "filename": "app/routes/chatRoom.js",
+    "groupTitle": "ChatRoom",
+    "name": "PostApiV1ChatroomDelete"
+  },
+  {
+    "group": "ChatRoom",
+    "version": "1.0.0",
+    "type": "post",
+    "url": "/api/v1/chatRoom/getall",
+    "title": "Get All Chat Rooms.",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>Auth Token.Use chatRoom/getall?authToken=&quot;enter token here&quot; (query param) (required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "myResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " {\n    \"error\": false,\n    \"message\": \"All Room Details Found\"\n    \"status\": 200,\n    \"data\": {\n       chatRoomId:string,\n       chatRoomName: string,\n       creatorName: string,\n       creatorId: string,\n       createdOn: string,\n       modifiedOn: string\n    }\n\n}",
+          "type": "object"
+        }
+      ]
+    },
+    "filename": "app/routes/chatRoom.js",
+    "groupTitle": "ChatRoom",
+    "name": "PostApiV1ChatroomGetall"
+  },
+  {
+    "group": "Emit_Events",
+    "version": "1.0.0",
+    "type": "post",
+    "url": "Send",
+    "title": "From Front End.",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "setUser",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "chatMsg",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "userTyping",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "allChatRoomMsg",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Object-Sent:",
+          "content": "//--setUser\n       obj = {\n            authToken: string,\n            chatRoomId; string\n        }",
+          "type": "object"
+        },
+        {
+          "title": "Object-Send:",
+          "content": "//--chatMsg\n        obj = {\n                        senderName: string,\n                        senderId: string,\n                        message: string\n              }",
+          "type": "object"
+        },
+        {
+          "title": "Object-Received:",
+          "content": "//--userTyping\n        obj = {\n                        senderName: string,\n                       \n              }",
+          "type": "object"
+        },
+        {
+          "title": "Object-Received:",
+          "content": "//--userTyping\n       \" \"",
+          "type": "object"
+        }
+      ]
+    },
+    "filename": "app/routes/chatRoom.js",
+    "groupTitle": "Emit_Events",
+    "name": "PostSend"
+  },
+  {
+    "group": "Listen_Events",
+    "version": "1.0.0",
+    "type": "post",
+    "url": "Listen",
+    "title": "From server.",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "verifyUser",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "errorEvent",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "onlineUserList",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "chatMsg",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "userTyping",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "myMsg",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "myResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Object-Received:",
+          "content": "//--verifyUser\n       obj = {\n            message: 'Socket Connected',\n        }",
+          "type": "object"
+        },
+        {
+          "title": "Object-Received:",
+          "content": "//--errorEvent\n       \"a message string\"",
+          "type": "object"
+        },
+        {
+          "title": "Object-Received:",
+          "content": "//--onlineUserList\n        obj = {\n                        message: string,\n                        sendBy: string,\n                        list: [{ userId: currentUser.userId, fullName: fullName }]\n              }",
+          "type": "object"
+        },
+        {
+          "title": "Object-Received:",
+          "content": "//--chatMsg\n        obj = {\n                        senderName: string,\n                        senderId: string,\n                        message: string\n              }",
+          "type": "object"
+        },
+        {
+          "title": "Object-Received:",
+          "content": "//--userTyping\n        obj = {\n                        senderName: string,\n                       \n              }",
+          "type": "object"
+        },
+        {
+          "title": "Object-Received:",
+          "content": "//--myMsg\n        obj = [{\n                        senderName: string,\n                        senderId: string,\n                        message: string\n                       \n              }]",
+          "type": "object"
+        }
+      ]
+    },
+    "filename": "app/routes/chatRoom.js",
+    "groupTitle": "Listen_Events",
+    "name": "PostListen"
+  },
+  {
+    "type": "post",
+    "url": "/api/v1/user/signup",
+    "title": "Create New  User",
+    "version": "0.0.1",
+    "group": "User",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "firstName",
+            "description": "<p>name of the suer passed as a body parameter</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "lastName",
+            "description": "<p>of the user passed as a body parameter</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "email",
+            "description": "<p>email of the user. (body params) (required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "password",
+            "description": "<p>password of the user. (body params) (required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "mobileNumber",
+            "description": "<p>category of the user passed as a body parameter</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " {\n  \"error\": false,\n  \"message\": \"User Created.\",\n  \"status\": 200,\n  \"data\": [\n\t\t\t\t{\n\t\t\t\t\t_id: \"string\",\n                        firstName: \"string\",\n                        lastName: \"string\",\n                        email: \"string\",\n                        mobileNumber: \"number\",\n                        userId:\"string\",\n                        createdOn:\"string\"\n                  __v: number\n\t\t\t\t}\n  \t\t]\n \t}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/user.js",
+    "groupTitle": "User",
+    "name": "PostApiV1UserSignup"
+  },
+  {
+    "group": "User",
+    "version": "1.0.0",
+    "type": "post",
+    "url": "/api/v1/users/changepassword",
+    "title": "Change Password.",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "token",
+            "description": "<p>Token generated from forgot password api. (body params) (required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Email of the user. (body params) (required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "myResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " {\n    \"error\": false,\n    \"message\": \"Password changed for uday@gmail.com\"\n    \"status\": 200,\n    \"data\": null\n\n}",
+          "type": "object"
+        }
+      ]
+    },
+    "filename": "app/routes/user.js",
+    "groupTitle": "User",
+    "name": "PostApiV1UsersChangepassword"
+  },
+  {
+    "group": "User",
+    "version": "1.0.0",
+    "type": "post",
+    "url": "/api/v1/users/forgotpassword",
+    "title": "Forgot Password.",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "email",
+            "description": "<p>email of the user. (body params) (required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "myResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "Use",
+            "description": "<p>this token to as authentication  token to change password</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " {\n    \"error\": false,\n    \"message\": \"eyJhbGciOiJIUertyuiopojhgfdwertyuVCJ9.MCwiZXhwIjoxNTIwNDI29tIiwibGFzdE5hbWUiE4In19.hAR744xIY9K53JWm1rQ2mc\"\n    \"status\": 200,\n    \"data\": null\n\n}",
+          "type": "object"
+        }
+      ]
+    },
+    "filename": "app/routes/user.js",
+    "groupTitle": "User",
+    "name": "PostApiV1UsersForgotpassword"
+  },
+  {
+    "group": "User",
+    "version": "1.0.0",
+    "type": "post",
+    "url": "/api/v1/users/login",
+    "title": "User Login.",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "email",
+            "description": "<p>email of the user. (body params) (required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "password",
+            "description": "<p>password of the user. (body params) (required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "myResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " {\n    \"error\": false,\n    \"message\": \"Login Successful\",\n    \"status\": 200,\n    \"data\": {\n        \"authToken\": \"eyJhbGciOiJIUertyuiopojhgfdwertyuVCJ9.MCwiZXhwIjoxNTIwNDI29tIiwibGFzdE5hbWUiE4In19.hAR744xIY9K53JWm1rQ2mc\",\n        \"userDetails\": {\n        \"mobileNumber\": 2234435524,\n        \"email\": \"someone@mail.com\",\n        \"lastName\": \"Sengar\",\n        \"firstName\": \"Uday\",\n        \"userId\": \"-E9zxTYA8\"\n    }\n\n}",
+          "type": "object"
+        }
+      ]
+    },
+    "filename": "app/routes/user.js",
+    "groupTitle": "User",
+    "name": "PostApiV1UsersLogin"
+  }
+] });
